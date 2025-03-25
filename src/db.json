@@ -2,31 +2,38 @@
   "users": [
     {
       "id": "2",
-      "nome": "Bichento"
+      "name": "Bichento",
+      "email": "Bichento@email.com"
     },
     {
       "id": "3",
-      "nome": "Amora"
+      "name": "Amora",
+      "email": "Amora@email.com"
     },
     {
       "id": "4",
-      "nome": "Chana"
+      "name": "Chana",
+      "email": "Chana@email.com"
     },
     {
       "id": "5",
-      "nome": "Harry Potter"
+      "name": "Harry Potter",
+      "email": "Harry Potter@email.com"
     },
     {
       "id": "6",
-      "nome": "Hermione Granger"
+      "name": "Hermione Granger",
+      "email": "Hermione Granger@email.com"
     },
     {
       "id": "d47f",
-      "nome": "Sírius"
+      "name": "Sírius",
+      "email": "Sírius@email.com"
     },
     {
       "id": "d068",
-      "nome": "Iana Editar"
+      "name": "Iana Editar",
+      "email": "Iana Editar@email.com"
     }
   ]
 }
