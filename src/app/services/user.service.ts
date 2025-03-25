@@ -18,6 +18,8 @@ export class UserService {
     return this.http.get<any[]>(`${this.apiUrl}${this.endpointUsuario}`);
   }
 
+  // Demais rotas caso use o json server
+
   // Método para editar um usuário
   editarUsuario(id: number, usuario: any): Observable<any> {
     return this.http.put<any>(`${this.apiUrl}${this.endpointUsuario}${id}`, usuario);

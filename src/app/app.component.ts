@@ -27,6 +27,7 @@ export class AppComponent {
   // Método para obter usuários
   obterUsuarios() {
     this.userService.obterUsuarios().subscribe((data) => {
+      console.log('eee ', data)
       this.usuarios = data;
     });
   }
