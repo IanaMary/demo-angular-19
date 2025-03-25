@@ -1,59 +1,65 @@
-# AngularApiDemo
+### Passos para usar o `json-server`
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.7.
+1. **Instalar o `json-server`**
+   
+   Primeiro, você precisa instalar o `json-server` globalmente ou como uma dependência de desenvolvimento no seu projeto.
 
-## Development server
+   Para instalar globalmente, use o seguinte comando:
 
-To start a local development server, run:
+   ```bash
+   npm install -g json-server
+   ```
 
-```bash
-ng serve
-```
+   Se você preferir instalar como dependência de desenvolvimento no seu projeto, faça:
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+   ```bash
+   npm install --save-dev json-server
+   ```
 
-## Code scaffolding
+2. **Criar um arquivo `db.json`**
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+   O arquivo `db.json` deve conter dados no formato JSON que o servidor vai utilizar para criar uma API RESTful. Aqui está um exemplo de um `db.json` simples:
 
-```bash
-ng generate component component-name
-```
+   ```json
+   {
+     "posts": [
+       { "id": 1, "title": "Hello World", "author": "Iana" }
+     ],
+     "comments": [
+       { "id": 1, "body": "Great post!", "postId": 1 }
+     ]
+   }
+   ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+3. **Iniciar o servidor**
 
-```bash
-ng generate --help
-```
+   Com o `json-server` instalado e o `db.json` pronto, você pode iniciar o servidor com o comando:
 
-## Building
+   ```bash
+   json-server --watch db.json
+   ```
 
-To build the project run:
+   Isso vai criar um servidor de API RESTful fictício com os dados do seu arquivo `db.json`. O servidor estará rodando na porta padrão 3000, e a estrutura das rotas será automaticamente gerada com base nas coleções do JSON (como `posts`, `comments`, etc.).
 
-```bash
-ng build
-```
+   Por exemplo, você pode acessar:
+   - `GET http://localhost:3000/posts` para obter todos os posts.
+   - `GET http://localhost:3000/posts/1` para obter o post com o id 1.
+   - `POST http://localhost:3000/posts` para adicionar um novo post.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+4. **Customização**
 
-## Running unit tests
+   Você pode adicionar várias opções ao comando `json-server`, como escolher uma porta diferente com `--port`:
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+   ```bash
+   json-server --watch db.json --port 5000
+   ```
 
-```bash
-ng test
-```
+### Exemplos de uso da API gerada
 
-## Running end-to-end tests
+- **GET** `/posts`: Retorna todos os posts.
+- **POST** `/posts`: Cria um novo post.
+- **GET** `/posts/1`: Retorna o post com `id` 1.
+- **PUT/PATCH** `/posts/1`: Atualiza o post com `id` 1.
+- **DELETE** `/posts/1`: Deleta o post com `id` 1.
 
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Esse comando é muito útil para protótipos rápidos ou para testar front-end sem precisar configurar um back-end completo.
