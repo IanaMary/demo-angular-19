@@ -1,0 +1,13 @@
+<ng-container ngIf="usuario">
+                <mat-card class="example-card" appearance="outlined">
+                                <mat-card-header>
+                                                <div mat-card-avatar class="example-header-image"></div>
+                                                <mat-card-title>{{usuario?.name}}</mat-card-title>
+                                                <mat-card-subtitle>{{usuario?.email}}</mat-card-subtitle>
+                                </mat-card-header>
+                                <!-- Devia ter a imagem do usuario, mas a api não fornece -->
+                                <img  mat-card-image src="assets/usuario.png"
+                                                alt="foto do perfil">
+                </mat-card>
+
+</ng-container>
