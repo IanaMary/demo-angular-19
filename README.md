@@ -57,3 +57,25 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+
+## Json server
+
+Para instalar globalmente, use o seguinte comando: npm install -g json-server
+
+Criar um arquivo db.json - O arquivo db.json deve conter dados no formato JSON que o servidor vai utilizar para criar uma API RESTful. Aqui está um exemplo de um db.json simples:
+
+```
+{
+  "users": [
+    {
+      "id": "1",
+      "nome": "usuario",
+      "email": "usuario@email.com"
+    }
+}
+
+```
+
+Iniciar o servidor - Com o json-server instalado e o db.json pronto, você pode iniciar o servidor com o comando: json-server --watch {caminho}/db.json
+
