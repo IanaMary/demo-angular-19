@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
 })
 
 export class UserService {
-  private readonly apiUrl = 'http://localhost:3000/';
-  // private readonly apiUrl = 'https://jsonplaceholder.typicode.com/';
+  // private readonly apiUrl = 'http://localhost:3000/';
+  private readonly apiUrl = 'https://jsonplaceholder.typicode.com/';
   private readonly endpointUsuario = 'users/'; 
 
   constructor(private http: HttpClient) {}
