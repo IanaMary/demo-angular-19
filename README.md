@@ -61,7 +61,11 @@ For more information on using the Angular CLI, including detailed command refere
 
 ## Json server
 
-Para instalar globalmente, use o seguinte comando: npm install -g json-server
+Para instalar globalmente, use o seguinte comando: 
+
+```
+  npm install -g json-server
+```
 
 Criar um arquivo db.json - O arquivo db.json deve conter dados no formato JSON que o servidor vai utilizar para criar uma API RESTful. Aqui está um exemplo de um db.json simples:
 
@@ -77,5 +81,8 @@ Criar um arquivo db.json - O arquivo db.json deve conter dados no formato JSON q
 
 ```
 
-Iniciar o servidor - Com o json-server instalado e o db.json pronto, você pode iniciar o servidor com o comando: json-server --watch {caminho}/db.json
+Iniciar o servidor com o json-server instalado e o db.json pronto, você pode iniciar o servidor com o comando: 
+```
+  json-server --watch {caminho}/db.json
+```
 
