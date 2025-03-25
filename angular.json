@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-api-demo": {
+    "defafio-am53": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/angular-api-demo",
+            "outputPath": "dist/defafio-am53",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -64,10 +64,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "angular-api-demo:build:production"
+              "buildTarget": "defafio-am53:build:production"
             },
             "development": {
-              "buildTarget": "angular-api-demo:build:development"
+              "buildTarget": "defafio-am53:build:development"
             }
           },
           "defaultConfiguration": "development"
