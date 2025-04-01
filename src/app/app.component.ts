@@ -12,7 +12,7 @@ import { UserCardComponent } from './user-card/user-card.component';
   styleUrls: ['./app.component.sass'],
 })
 export class AppComponent {
-  title = 'defafio-am53';
+  title = 'demo-angular-19';
   usuarios: any[] = [];  // Lista de usuários
   usuarioEditado: any = null;  // Usuário que está sendo editado
   novoUsuario: any = { nome: '' };  // Objeto para o novo usuário
