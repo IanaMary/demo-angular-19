@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
-import { UserService } from './services/user.service';
 import { UserCardComponent } from './user-card/user-card.component';
 import { Usuario } from './usuario.model';
 import { UserEditarDialogComponent } from './user-editarr-dialog/user-editar-dialog.component';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { UsuarioService } from './usuario/services/usuario.service';
 
 @Component({
   selector: 'app-root',
@@ -30,7 +30,7 @@ export class AppComponent {
   mostrarFormularioAdicao = false;  
 
   constructor(
-    private userService: UserService, 
+    private usuariooService: UsuarioService, 
     private dialog: MatDialog, 
     private translate: TranslateService
   ) {}
@@ -48,7 +48,7 @@ export class AppComponent {
 
   // Obtém a lista de usuários do serviço
   obterUsuarios() {
-    this.userService.obterUsuarios().subscribe((data: Usuario[]) => {
+    this.usuariooService.obterUsuarios().subscribe((data: Usuario[]) => {
       this.usuarios = data;
     });
   }
@@ -82,7 +82,7 @@ export class AppComponent {
     const email = usuarioEditado.nome.replace(/\s+/g, "").toLowerCase();
     usuarioEditado.email = `${email}@email.com`; 
 
-    this.userService.editarUsuario(usuarioEditado.id!, usuarioEditado).subscribe((usuarioAtualizado: Usuario) => {
+    this.usuariooService.editarUsuario(usuarioEditado.id!, usuarioEditado).subscribe((usuarioAtualizado: Usuario) => {
       const index = this.usuarios.findIndex(u => u.id === usuarioAtualizado.id);
       if (index !== -1) {
         this.usuarios[index] = usuarioAtualizado;  // Atualiza a lista com os novos dados
@@ -106,7 +106,7 @@ export class AppComponent {
       const email = usuario.nome.replace(/\s+/g, "").toLowerCase();
       usuario.email = `${email}@email.com`;
 
-      this.userService.adicionarUsuario(usuario).subscribe((usuarioAdicionado: Usuario) => {
+      this.usuariooService.adicionarUsuario(usuario).subscribe((usuarioAdicionado: Usuario) => {
         this.usuarios.unshift(usuarioAdicionado);  // Insere o novo usuário no topo da lista
         this.novoUsuario = { nome: '', email: '' };  // Reseta os campos do formulário
         this.mostrarFormularioAdicao = false;  // Fecha o formulário de adição
@@ -116,7 +116,7 @@ export class AppComponent {
 
   // Exclui um usuário da lista baseado no seu ID
   excluirUsuario(idUsuario: number) {
-    this.userService.excluirUsuario(idUsuario).subscribe(() => {
+    this.usuariooService.excluirUsuario(idUsuario).subscribe(() => {
       this.usuarios = this.usuarios.filter(usuario => usuario.id !== idUsuario);  // Remove o usuário da lista
     });
   }

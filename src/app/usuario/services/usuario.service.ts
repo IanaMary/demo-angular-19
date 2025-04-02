@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root', // O serviço será disponibilizado para toda a aplicação
 })
 
-export class UserService {
+export class UsuarioService {
   private readonly apiUrl = 'http://localhost:3000/';
   private readonly endpointUsuario = 'users/'; 
 
