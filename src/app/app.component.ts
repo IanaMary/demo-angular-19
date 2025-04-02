@@ -5,11 +5,12 @@ import { UserService } from './services/user.service';
 import { UserCardComponent } from './user-card/user-card.component';
 import { Usuario } from './usuario.model';
 import { UserEditarDialogComponent } from './user-editarr-dialog/user-editar-dialog.component';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
   standalone: true, 
-  imports: [CommonModule, UserCardComponent],
+  imports: [CommonModule, UserCardComponent, TranslateModule],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.sass'],
 })
@@ -20,10 +21,16 @@ export class AppComponent {
   novoUsuario: Usuario = { nome: '', email: '' };  // Usado para inicializar um novo usuário
   mostrarFormularioAdicao = false;  // Controle para mostrar ou esconder o formulário de adição
 
-  constructor(private userService: UserService, private dialog: MatDialog) {}
+  constructor(private userService: UserService, private dialog: MatDialog, private translate: TranslateService) {
+    this.translate.setDefaultLang('pt'); // Idioma padrão
+  }
 
   ngOnInit(): void {
     this.obterUsuarios();  // Inicializa a lista de usuários ao carregar o componente
+  }
+
+  mudarIdioma(idioma: string) {
+    this.translate.use(idioma);
   }
 
   // Obtém a lista de usuários do serviço.

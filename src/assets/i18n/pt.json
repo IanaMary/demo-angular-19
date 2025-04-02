@@ -1,0 +1,11 @@
+{
+  "HOME": {
+    "NOME": "Nome",
+    "EMAIL": "Email"
+  },
+  "BOTOES":  {
+    "ADICIONAR_USUARIO": "Adicionar usuário",
+    "PORTUGUES": "Português",
+    "INGLES": "inglês"
+  }
+}

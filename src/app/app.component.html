@@ -1,6 +1,10 @@
 <!-- Botão para adicionar um novo usuário -->
 <div class="lista-usuario">
-  <button class="botao-adicionar-usuario" mat-raised-button color="primary" (click)="abrirModalEdicaoOuAdicao(null)">Adicionar Usuário</button>
+  <button color="primary" (click)="abrirModalEdicaoOuAdicao(null)">
+    {{ 'BOTOES.ADICIONAR_USUARIO' | translate }}
+  </button>
+  <button (click)="mudarIdioma('pt')">{{'BOTOES.PORTUGUES' | translate}}</button>
+  <button (click)="mudarIdioma('en')">{{'BOTOES.INGLES' | translate}}</button>
 </div>
 
 <!-- Lista de usuários -->
