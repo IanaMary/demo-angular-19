@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
-import { UserCardComponent } from './user-card/user-card.component';
+import { UsuarioCardComponent } from './usuario/usuario-card/usuario-card.component';
 import { Usuario } from './usuario.model';
 import { UserEditarDialogComponent } from './user-editarr-dialog/user-editar-dialog.component';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
@@ -10,7 +10,7 @@ import { UsuarioService } from './usuario/services/usuario.service';
 @Component({
   selector: 'app-root',
   standalone: true, 
-  imports: [CommonModule, UserCardComponent, TranslateModule],
+  imports: [CommonModule, UsuarioCardComponent, TranslateModule],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.sass'],
 })

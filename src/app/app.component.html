@@ -16,10 +16,10 @@
     [ngClass]="['div-usuario', i % 2 === 0 ? 'div-usuaruio-par' : 'div-usuario-impar']">
     
     <!-- Componente de card para exibir os dados do usuário -->
-    <user-card 
+    <usuario-card 
       [usuario]="usuario" 
       (editarUsuarioEmit)="abrirModalEdicaoOuAdicao($event)" 
       (excluirUsuarioEmit)="excluirUsuario($event)">
-    </user-card>
+    </usuario-card>
   </div>
 </div>
