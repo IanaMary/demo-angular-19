@@ -61,6 +61,8 @@ export class AppComponent {
 
   // Salva a edição de um usuário.
   salvarEdicao(usuarioEditado: Usuario) {
+    const email =  usuarioEditado.nome.replace(/\s+/g, "").toLowerCase();;
+    usuarioEditado.email = `${email}@email.com` 
     this.userService.editarUsuario(usuarioEditado.id!, usuarioEditado).subscribe((usuarioAtualizado: Usuario) => {
       const index = this.usuarios.findIndex(usuario => usuario.id === usuarioAtualizado.id);
       if (index !== -1) {
@@ -81,7 +83,9 @@ export class AppComponent {
 
   //  Adiciona um novo usuário.
   adicionarUsuario(usuario: Usuario) {
-    if (usuario.nome && usuario.email) {
+    if (usuario.nome) {
+      const email =  usuario.nome.replace(/\s+/g, "").toLowerCase();;
+      usuario.email = `${email}@email.com` 
       this.userService.adicionarUsuario(usuario).subscribe((usuarioAdicionado: Usuario) => {
         this.usuarios.unshift(usuarioAdicionado);  // Adiciona o novo usuário à lista
         this.novoUsuario = { nome: '', email: '' };  // Reseta o formulário de novo usuário
