@@ -1,9 +1,11 @@
 <!-- Botão para adicionar um novo usuário -->
-<button mat-raised-button color="primary" (click)="abrirModalEdicaoOuAdicao(null)">Adicionar Usuário</button>
+<div class="lista-usuario">
+  <button class="botao-adicionar-usuario" mat-raised-button color="primary" (click)="abrirModalEdicaoOuAdicao(null)">Adicionar Usuário</button>
+</div>
 
 <!-- Lista de usuários -->
 <div class="lista-usuario">
-  <div class="div-user" *ngFor="let usuario of usuarios">
+  <div class="div-usuario" *ngFor="let usuario of usuarios">
     <!-- Componente para exibir o card do usuário -->
     <!-- Função abrirModalEdicaoOuAdicao - Abre o modal de edição -->
     <!-- Função excluirUsuario - Exclui o usuário -->
