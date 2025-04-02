@@ -1,12 +1,14 @@
 {
   "HOME": {
-    "NOME": "Nome",
+    "NOME": "Name",
     "EMAIL": "Email"
   },
   "BOTOES":  {
     "ADICIONAR_USUARIO": "Add user",
     "EDITAR_USUARIO": "Edit user",
     "DELETAR_USUARIO": "Delete user",
+    "SALVAR_USUARIO": "Save",
+    "CANCELAR_USUARIO": "Cancel",
     "PORTUGUES": "Portuguese",
     "INGLES": "English"
   }

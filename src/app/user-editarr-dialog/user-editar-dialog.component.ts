@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   standalone: true,
@@ -12,15 +13,19 @@ import { MatInputModule } from '@angular/material/input';
   templateUrl: './user-editar-dialog.component.html',
   styleUrls: ['./user-editar-dialog.component.sass'],
   // Importação dos módulos necessários, incluindo FormsModule para utilizar ngModel
-  imports: [MatCardModule, MatButtonModule, CommonModule, MatInputModule, FormsModule],  
+  imports: [MatCardModule, MatButtonModule, CommonModule, MatInputModule, FormsModule, TranslateModule],  
 })
 export class UserEditarDialogComponent implements OnInit {
 
   // Injeção de dependências do MatDialogRef (para controlar o dialog) e MAT_DIALOG_DATA (para obter dados do dialog)
   constructor(
+    private translate: TranslateService,
     public dialogRef: MatDialogRef<UserEditarDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) {}
+  ) {
+    const idioma = localStorage.getItem('idioma') || 'pt';
+    this.translate.use(idioma);
+  }
 
   // Função ngOnInit() vazia, não utilizada neste exemplo, mas preparada para uso futuro.
   ngOnInit(): void { }

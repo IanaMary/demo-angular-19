@@ -22,8 +22,11 @@ export class UserCardComponent {
   @Output() excluirUsuarioEmit = new EventEmitter<any>();
 
   constructor(private translate: TranslateService) {
-    this.translate.setDefaultLang('pt'); // Idioma padrão
+    const idioma = localStorage.getItem('idioma') || 'pt';
+    this.translate.use(idioma);
   }
+
+
 
   // Função para emitir o evento de edição de usuário.
   editarUsuario(usuario: any) {

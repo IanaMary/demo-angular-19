@@ -21,15 +21,14 @@ export class AppComponent {
   novoUsuario: Usuario = { nome: '', email: '' };  // Usado para inicializar um novo usuário
   mostrarFormularioAdicao = false;  // Controle para mostrar ou esconder o formulário de adição
 
-  constructor(private userService: UserService, private dialog: MatDialog, private translate: TranslateService) {
-    this.translate.setDefaultLang('pt'); // Idioma padrão
-  }
+  constructor(private userService: UserService, private dialog: MatDialog, private translate: TranslateService) {}
 
   ngOnInit(): void {
     this.obterUsuarios();  // Inicializa a lista de usuários ao carregar o componente
   }
 
   mudarIdioma(idioma: string) {
+    localStorage.setItem('idioma', idioma);
     this.translate.use(idioma);
   }
 
