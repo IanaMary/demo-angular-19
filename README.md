@@ -1,7 +1,3 @@
-Aqui está uma versão aprimorada das instruções para configurar um CRUD utilizando Angular 19 e `json-server`, com mais detalhes e melhorias para a utilização do `json-server` e integração com um aplicativo Angular:
-
----
-
 # CRUD usando Angular 19 e json-server
 
 ## Passos para usar o `json-server`
