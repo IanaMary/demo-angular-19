@@ -16,23 +16,37 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 })
 export class AppComponent {
   title = 'angular-api-demo';
-  usuarios: Usuario[] = [];   // Lista de usuários para exibição
-  usuarioEditado: Usuario | null = null;  // Armazena o usuário que está sendo editado, se houver
-  novoUsuario: Usuario = { nome: '', email: '' };  // Usado para inicializar um novo usuário
-  mostrarFormularioAdicao = false;  // Controle para mostrar ou esconder o formulário de adição
 
-  constructor(private userService: UserService, private dialog: MatDialog, private translate: TranslateService) {}
+  // Lista de usuários exibidos na interface
+  usuarios: Usuario[] = [];   
 
+  // Armazena temporariamente um usuário que está sendo editado
+  usuarioEditado: Usuario | null = null;  
+
+  // Estrutura base para criar um novo usuário
+  novoUsuario: Usuario = { nome: '', email: '' };  
+
+  // Controle para exibir ou ocultar o formulário de adição
+  mostrarFormularioAdicao = false;  
+
+  constructor(
+    private userService: UserService, 
+    private dialog: MatDialog, 
+    private translate: TranslateService
+  ) {}
+
+  // Método executado ao iniciar o componente
   ngOnInit(): void {
-    this.obterUsuarios();  // Inicializa a lista de usuários ao carregar o componente
+    this.obterUsuarios();  
   }
 
+  // Método para mudar o idioma da aplicação e salvar a preferência no localStorage
   mudarIdioma(idioma: string) {
     localStorage.setItem('idioma', idioma);
     this.translate.use(idioma);
   }
 
-  // Obtém a lista de usuários do serviço.
+  // Obtém a lista de usuários do serviço
   obterUsuarios() {
     this.userService.obterUsuarios().subscribe((data: Usuario[]) => {
       this.usuarios = data;
@@ -40,67 +54,67 @@ export class AppComponent {
   }
 
   /**
-   * Abre o modal de edição ou adição de usuário.
-   * Se um usuário for passado, entra no modo de edição, caso contrário, inicia no modo de adição.
+   * Abre o modal para edição ou adição de usuário.
+   * Se um usuário for passado, entra no modo de edição.
+   * Se for `null`, inicia no modo de adição.
    */
   abrirModalEdicaoOuAdicao(usuario: Usuario | null) {
-    // Cria uma cópia do usuário, ou um novo objeto vazio se for adição
+    // Cria um novo objeto para evitar alterações diretas no original
     const usuarioEditado = usuario ? { ...usuario } : { nome: '', email: '', foto: '' };
     
     // Abre o modal de edição/adicionar usuário
     const dialogRef = this.dialog.open(UserEditarDialogComponent, {
       width: '400px',
-      data: { usuarioEditado },  // Passa os dados para o modal
+      data: { usuarioEditado },  
     });
 
-    // Após o fechamento do modal, lida com a edição ou adição
+    // Após o fechamento do modal, verifica se houve edição ou adição de usuário
     dialogRef.afterClosed().subscribe((resultado: Usuario | null) => {
       if (resultado) {
-        if (usuario) {
-          this.salvarEdicao(resultado);  // Salva as edições se for um usuário existente
-        } else {
-          this.adicionarUsuario(resultado);  // Adiciona um novo usuário se for o modo de adição
-        }
+        usuario ? this.salvarEdicao(resultado) : this.adicionarUsuario(resultado);
       }
     });
   }
 
-  // Salva a edição de um usuário.
+  // Atualiza os dados de um usuário existente
   salvarEdicao(usuarioEditado: Usuario) {
-    const email =  usuarioEditado.nome.replace(/\s+/g, "").toLowerCase();;
-    usuarioEditado.email = `${email}@email.com` 
+    // Gera um e-mail baseado no nome do usuário removendo espaços e convertendo para minúsculas
+    const email = usuarioEditado.nome.replace(/\s+/g, "").toLowerCase();
+    usuarioEditado.email = `${email}@email.com`; 
+
     this.userService.editarUsuario(usuarioEditado.id!, usuarioEditado).subscribe((usuarioAtualizado: Usuario) => {
-      const index = this.usuarios.findIndex(usuario => usuario.id === usuarioAtualizado.id);
+      const index = this.usuarios.findIndex(u => u.id === usuarioAtualizado.id);
       if (index !== -1) {
-        this.usuarios[index] = usuarioAtualizado;  // Atualiza a lista com o usuário editado
+        this.usuarios[index] = usuarioAtualizado;  // Atualiza a lista com os novos dados
       }
     });
   }
 
-  // Cancela a edição ou adição de usuário.
+  // Cancela a edição do usuário
   cancelar() {
     this.usuarioEditado = null;
   }
 
-  // Alterna a visibilidade do formulário de adição de usuário.
+  // Alterna a visibilidade do formulário de adição de usuário
   alternarFormularioAdicao() {
     this.mostrarFormularioAdicao = !this.mostrarFormularioAdicao;
   }
 
-  //  Adiciona um novo usuário.
+  // Adiciona um novo usuário à lista
   adicionarUsuario(usuario: Usuario) {
     if (usuario.nome) {
-      const email =  usuario.nome.replace(/\s+/g, "").toLowerCase();;
-      usuario.email = `${email}@email.com` 
+      const email = usuario.nome.replace(/\s+/g, "").toLowerCase();
+      usuario.email = `${email}@email.com`;
+
       this.userService.adicionarUsuario(usuario).subscribe((usuarioAdicionado: Usuario) => {
-        this.usuarios.unshift(usuarioAdicionado);  // Adiciona o novo usuário à lista
-        this.novoUsuario = { nome: '', email: '' };  // Reseta o formulário de novo usuário
+        this.usuarios.unshift(usuarioAdicionado);  // Insere o novo usuário no topo da lista
+        this.novoUsuario = { nome: '', email: '' };  // Reseta os campos do formulário
         this.mostrarFormularioAdicao = false;  // Fecha o formulário de adição
       });
     }
   }
 
-  // Exclui um usuário baseado no seu ID.
+  // Exclui um usuário da lista baseado no seu ID
   excluirUsuario(idUsuario: number) {
     this.userService.excluirUsuario(idUsuario).subscribe(() => {
       this.usuarios = this.usuarios.filter(usuario => usuario.id !== idUsuario);  // Remove o usuário da lista

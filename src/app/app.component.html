@@ -3,18 +3,22 @@
   <button color="primary" (click)="abrirModalEdicaoOuAdicao(null)">
     {{ 'BOTOES.ADICIONAR_USUARIO' | translate }}
   </button>
-  <button (click)="mudarIdioma('pt')">{{'BOTOES.PORTUGUES' | translate}}</button>
-  <button (click)="mudarIdioma('en')">{{'BOTOES.INGLES' | translate}}</button>
+
+  <!-- Botões para trocar o idioma -->
+  <button (click)="mudarIdioma('pt')">{{ 'BOTOES.PORTUGUES' | translate }}</button>
+  <button (click)="mudarIdioma('en')">{{ 'BOTOES.INGLES' | translate }}</button>
 </div>
 
 <!-- Lista de usuários -->
 <div class="lista-usuario">
+  <!-- Diretiva *ngFor para iterar sobre a lista de usuários -->
   <div *ngFor="let usuario of usuarios; let i = index"
-    [ngClass]="['div-usuario', i%2 === 0 ? 'div-usuaruio-par' : 'div-usuario-impar']">
-    <!-- Componente para exibir o card do usuário -->
-    <!-- Função abrirModalEdicaoOuAdicao - Abre o modal de edição -->
-    <!-- Função excluirUsuario - Exclui o usuário -->
-    <user-card [usuario]="usuario" (editarUsuarioEmit)="abrirModalEdicaoOuAdicao($event)"
+    [ngClass]="['div-usuario', i % 2 === 0 ? 'div-usuaruio-par' : 'div-usuario-impar']">
+    
+    <!-- Componente de card para exibir os dados do usuário -->
+    <user-card 
+      [usuario]="usuario" 
+      (editarUsuarioEmit)="abrirModalEdicaoOuAdicao($event)" 
       (excluirUsuarioEmit)="excluirUsuario($event)">
     </user-card>
   </div>

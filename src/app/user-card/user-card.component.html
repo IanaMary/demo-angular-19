@@ -1,28 +1,32 @@
-<ng-container *ngIf="usuario"> <!-- Verifica se o usuário existe -->
-  <!-- Cartão para exibir as informações do usuário -->
+<!-- Verifica se o objeto 'usuario' existe antes de exibir o conteúdo -->
+<ng-container *ngIf="usuario"> 
+
+  <!-- Cartão do Angular Material para exibir as informações do usuário -->
   <mat-card class="usuario-card" appearance="outlined">
 
-    <!-- Cabeçalho do cartão, contendo o avatar e informações do usuário -->
+    <!-- Cabeçalho do cartão com título e subtítulo -->
     <mat-card-header>
-      <!-- Nome do usuário -->
+      <!-- Nome do usuário com classe 'truncate' para evitar quebras longas -->
       <mat-card-title class="truncate">{{ usuario?.nome }}</mat-card-title>
-      <!-- Email do usuário -->
-      <mat-card-subtitle  class="truncate">{{ usuario?.email }}</mat-card-subtitle>
+      <!-- E-mail do usuário com mesma formatação -->
+      <mat-card-subtitle class="truncate">{{ usuario?.email }}</mat-card-subtitle>
     </mat-card-header>
 
-    <!-- Imagem do usuário, com fallback para imagem padrão caso a foto não exista -->
+    <!-- Exibição da foto do usuário. Caso não tenha uma foto, usa uma imagem padrão -->
     <img mat-card-image [src]="usuario.foto || 'assets/usuario.png'" alt="Foto do perfil">
 
-    <!-- Ações do cartão: Botões de editar e excluir -->
+    <!-- Seção de botões de ação (Editar e Excluir) -->
     <mat-card-actions>
-      <!-- Botão para editar o usuário -->
+      <!-- Botão para editar o usuário, usando tradução para internacionalização -->
       <button mat-button color="primary" (click)="editarUsuario(usuario)">
         {{ 'BOTOES.EDITAR_USUARIO' | translate }}
       </button>
-      <!-- Botão para excluir o usuário -->
+
+      <!-- Botão para excluir o usuário, chamando a função com o ID do usuário -->
       <button mat-button color="warn" (click)="excluirUsuario(usuario.id)">
         {{ 'BOTOES.DELETAR_USUARIO' | translate }}
       </button>
     </mat-card-actions>
+
   </mat-card>
 </ng-container>

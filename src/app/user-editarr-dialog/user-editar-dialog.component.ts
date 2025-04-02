@@ -8,35 +8,38 @@ import { MatInputModule } from '@angular/material/input';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
-  standalone: true,
-  selector: 'app-user-editar-dialog',
-  templateUrl: './user-editar-dialog.component.html',
-  styleUrls: ['./user-editar-dialog.component.sass'],
-  // Importação dos módulos necessários, incluindo FormsModule para utilizar ngModel
+  standalone: true, // Define que este componente pode ser usado sem precisar de um módulo específico
+  selector: 'app-user-editar-dialog', // Nome do seletor para uso no HTML
+  templateUrl: './user-editar-dialog.component.html', // Caminho do template HTML do componente
+  styleUrls: ['./user-editar-dialog.component.sass'], // Caminho do arquivo de estilos
+  // Importação dos módulos necessários para o funcionamento do componente
   imports: [MatCardModule, MatButtonModule, CommonModule, MatInputModule, FormsModule, TranslateModule],  
 })
 export class UserEditarDialogComponent implements OnInit {
 
-  // Injeção de dependências do MatDialogRef (para controlar o dialog) e MAT_DIALOG_DATA (para obter dados do dialog)
+  // Injeção de dependências:
+  // - `MatDialogRef`: Referência do diálogo, usada para fechá-lo
+  // - `MAT_DIALOG_DATA`: Dados passados para o diálogo (no caso, o usuário a ser editado)
   constructor(
-    private translate: TranslateService,
+    private translate: TranslateService, 
     public dialogRef: MatDialogRef<UserEditarDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any // Dados injetados no diálogo (usuário em edição)
   ) {
+    // Define o idioma baseado no valor salvo no localStorage, padrão é 'pt'
     const idioma = localStorage.getItem('idioma') || 'pt';
     this.translate.use(idioma);
   }
 
-  // Função ngOnInit() vazia, não utilizada neste exemplo, mas preparada para uso futuro.
+  // Método do ciclo de vida do Angular, pode ser usado para inicializações (atualmente não utilizado)
   ngOnInit(): void { }
 
-  // Método para salvar as alterações e fechar o dialog, retornando os dados editados
+  // Método chamado ao salvar as alterações no usuário
   salvar() {
-    this.dialogRef.close(this.data.usuarioEditado); 
+    this.dialogRef.close(this.data.usuarioEditado); // Fecha o diálogo e retorna os dados editados
   }
 
-  // Método para cancelar a edição e fechar o dialog sem salvar alterações
+  // Método chamado ao cancelar a edição do usuário
   cancelar() {
-    this.dialogRef.close();
+    this.dialogRef.close(); // Fecha o diálogo sem salvar
   }
 }

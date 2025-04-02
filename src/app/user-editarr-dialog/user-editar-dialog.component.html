@@ -1,36 +1,46 @@
 <ng-container *ngIf="data.usuarioEditado">
-  <!-- Condicional para verificar se existe um usuário editado -->
+  <!-- Verifica se há um usuário em edição antes de exibir o formulário -->
+  
   <mat-card class="edit-card">
+    <!-- Card contendo o formulário de edição ou adição de usuário -->
 
-    <!-- Cabeçalho do card com o título -->
     <mat-card-header>
-      <!-- O título é dinâmico, dependendo se estamos editando ou adicionando -->
+      <!-- Cabeçalho do card com um título dinâmico -->
+
       <mat-card-title>
+        <!-- Verifica se o usuário já tem um nome definido (ou seja, se está sendo editado) -->
         <span *ngIf="data.usuarioEditado.nome; else adicionar">
-          {{ 'BOTOES.EDITAR_USUARIO' | translate }}
+          {{ 'BOTOES.EDITAR_USUARIO' | translate }} 
+          <!-- Texto traduzido para "Editar Usuário" -->
         </span>
+
         <ng-template #adicionar>
           {{ 'BOTOES.ADICIONAR_USUARIO' | translate }}
+          <!-- Caso contrário, exibe "Adicionar Usuário" -->
         </ng-template>
-        
       </mat-card-title>
     </mat-card-header>
 
-    <!-- Conteúdo do card com os campos do formulário -->
     <mat-card-content>
+      <!-- Conteúdo do card com os campos do formulário -->
 
-      <!-- Campo para nome -->
+      <!-- Campo de entrada para o nome do usuário -->
       <label>{{ 'HOME.NOME' | translate }}</label>
       <input matInput [(ngModel)]="data.usuarioEditado.nome" placeholder="Nome">
-
     </mat-card-content>
 
-    <!-- Ações do card (botões Salvar e Cancelar) -->
     <mat-card-actions>
+      <!-- Área de botões para salvar ou cancelar -->
+
       <!-- Botão para salvar as alterações -->
-      <button mat-button color="primary" (click)="salvar()">{{ 'BOTOES.SALVAR_USUARIO' | translate }}</button>
+      <button mat-button color="primary" (click)="salvar()">
+        {{ 'BOTOES.SALVAR_USUARIO' | translate }}
+      </button>
+
       <!-- Botão para cancelar a edição -->
-      <button mat-button color="warn" (click)="cancelar()">{{ 'BOTOES.CANCELAR_USUARIO' | translate }}</button>
+      <button mat-button color="warn" (click)="cancelar()">
+        {{ 'BOTOES.CANCELAR_USUARIO' | translate }}
+      </button>
     </mat-card-actions>
   </mat-card>
 </ng-container>
