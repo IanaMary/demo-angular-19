@@ -1,5 +1,18 @@
 # CRUD usando Angular 19 e json-server
 
+CRUD com Angular e json-server!
+
+  Acabei de criar um projeto usando Angular 19 e json-server para implementar um CRUD simples. Com o json-server, consegui simular rapidamente uma API RESTful, facilitando o desenvolvimento do front-end sem precisar configurar um back-end.
+
+Funcionalidades:
+
+  Adicionar, editar e excluir usuários
+
+Interface com Angular Material
+
+Ótimo para protótipos rápidos e para quem está começando com Angular.
+
+
 ## Passos para usar o `json-server`
 
 ### 1. **Instalar o `json-server`**
