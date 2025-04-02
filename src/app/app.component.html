@@ -5,7 +5,8 @@
 
 <!-- Lista de usuários -->
 <div class="lista-usuario">
-  <div class="div-usuario" *ngFor="let usuario of usuarios">
+  <div *ngFor="let usuario of usuarios; let i = index"
+    [ngClass]="['div-usuario', i%2 === 0 ? 'div-usuaruio-par' : 'div-usuario-impar']">
     <!-- Componente para exibir o card do usuário -->
     <!-- Função abrirModalEdicaoOuAdicao - Abre o modal de edição -->
     <!-- Função excluirUsuario - Exclui o usuário -->

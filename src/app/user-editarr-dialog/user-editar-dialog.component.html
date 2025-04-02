@@ -1,42 +1,29 @@
 <ng-container *ngIf="data.usuarioEditado">
-                <!-- Condicional para verificar se existe um usuário editado -->
-                <mat-card class="edit-card">
+  <!-- Condicional para verificar se existe um usuário editado -->
+  <mat-card class="edit-card">
 
-                                <!-- Cabeçalho do card com o título -->
-                                <mat-card-header>
-                                                <!-- O título é dinâmico, dependendo se estamos editando ou adicionando -->
-                                                <mat-card-title>{{ data.usuarioEditado ? 'Editar' : 'Adicionar' }}
-                                                                Usuário</mat-card-title>
-                                </mat-card-header>
+    <!-- Cabeçalho do card com o título -->
+    <mat-card-header>
+      <!-- O título é dinâmico, dependendo se estamos editando ou adicionando -->
+      <mat-card-title>{{ data.usuarioEditado ? 'Editar' : 'Adicionar' }}
+        Usuário</mat-card-title>
+    </mat-card-header>
 
-                                <!-- Conteúdo do card com os campos do formulário -->
-                                <mat-card-content>
+    <!-- Conteúdo do card com os campos do formulário -->
+    <mat-card-content>
 
-                                                <!-- Campo para nome -->
-                                                <label>Nome:</label>
-                                                <input matInput [(ngModel)]="data.usuarioEditado.nome"
-                                                                placeholder="Nome">
-                                                <br>
+      <!-- Campo para nome -->
+      <label>Nome:</label>
+      <input matInput [(ngModel)]="data.usuarioEditado.nome" placeholder="Nome">
 
-                                                <!-- Campo para email -->
-                                                <label>Email:</label>
-                                                <input matInput [(ngModel)]="data.usuarioEditado.email"
-                                                                placeholder="Email">
-                                                <br>
+    </mat-card-content>
 
-                                                <!-- Campo para foto (URL) -->
-                                                <label>Foto (URL):</label>
-                                                <input matInput [(ngModel)]="data.usuarioEditado.foto"
-                                                                placeholder="URL da foto">
-
-                                </mat-card-content>
-
-                                <!-- Ações do card (botões Salvar e Cancelar) -->
-                                <mat-card-actions>
-                                                <!-- Botão para salvar as alterações -->
-                                                <button mat-button color="primary" (click)="salvar()">Salvar</button>
-                                                <!-- Botão para cancelar a edição -->
-                                                <button mat-button color="warn" (click)="cancelar()">Cancelar</button>
-                                </mat-card-actions>
-                </mat-card>
+    <!-- Ações do card (botões Salvar e Cancelar) -->
+    <mat-card-actions>
+      <!-- Botão para salvar as alterações -->
+      <button mat-button color="primary" (click)="salvar()">Salvar</button>
+      <!-- Botão para cancelar a edição -->
+      <button mat-button color="warn" (click)="cancelar()">Cancelar</button>
+    </mat-card-actions>
+  </mat-card>
 </ng-container>
