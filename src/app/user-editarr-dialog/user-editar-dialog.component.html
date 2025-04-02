@@ -6,7 +6,7 @@
     <mat-card-header>
       <!-- O título é dinâmico, dependendo se estamos editando ou adicionando -->
       <mat-card-title>
-        <span *ngIf="data.usuarioEditado; else adicionar">
+        <span *ngIf="data.usuarioEditado.nome; else adicionar">
           {{ 'BOTOES.EDITAR_USUARIO' | translate }}
         </span>
         <ng-template #adicionar>
