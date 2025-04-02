@@ -16,6 +16,7 @@ import { UsuarioModalCriarEditarComponent } from './usuario/usuario-modal-criar-
 })
 export class AppComponent {
   title = 'angular-api-demo';
+  classesHogwarts: string[] = ['grifinoria', 'corvinal', 'lufa-lufa', 'sonserina'];
 
   // Lista de usuários exibidos na interface
   usuarios: Usuario[] = [];

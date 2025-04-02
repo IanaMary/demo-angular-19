@@ -2,8 +2,7 @@
 <ng-container *ngIf="usuario"> 
 
   <!-- Cartão do Angular Material para exibir as informações do usuário -->
-  <mat-card class="usuario-card" appearance="outlined">
-
+  <mat-card [ngClass]="['usuario-card', casaUsuario]" appearance="outlined">
     <!-- Cabeçalho do cartão com título e subtítulo -->
     <mat-card-header>
       <!-- Nome do usuário com classe 'truncate' para evitar quebras longas -->
@@ -13,7 +12,7 @@
     </mat-card-header>
 
     <!-- Exibição da foto do usuário. Caso não tenha uma foto, usa uma imagem padrão -->
-    <img mat-card-image [src]="usuario.foto || 'assets/usuario.png'" alt="Foto do perfil">
+    <img mat-card-image [src]="usuario.foto || 'assets/imagem/usuario.png'" alt="Foto do perfil">
 
     <!-- Seção de botões de ação (Editar e Excluir) -->
     <mat-card-actions>

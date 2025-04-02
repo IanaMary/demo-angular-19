@@ -16,7 +16,8 @@ export class UsuarioCardComponent {
   
   // Propriedade de entrada que recebe os dados do usuário a ser exibido.
   @Input() usuario: any;
-
+  @Input() casaUsuario = 'grifinoria'
+ 
   // Eventos de saída para notificar o componente pai sobre ações de edição e exclusão.
   @Output() editarUsuarioEmit = new EventEmitter<any>();
   @Output() excluirUsuarioEmit = new EventEmitter<any>();

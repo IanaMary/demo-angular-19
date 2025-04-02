@@ -12,12 +12,12 @@
 <!-- Lista de usuários -->
 <div class="lista-usuario">
   <!-- Diretiva *ngFor para iterar sobre a lista de usuários -->
-  <div *ngFor="let usuario of usuarios; let i = index"
-    [ngClass]="['div-usuario', i % 2 === 0 ? 'div-usuaruio-par' : 'div-usuario-impar']">
+  <div *ngFor="let usuario of usuarios; let i = index" class="div-usuario">
     
     <!-- Componente de card para exibir os dados do usuário -->
     <usuario-card 
       [usuario]="usuario" 
+      [casaUsuario]="classesHogwarts[i % 4]"
       (editarUsuarioEmit)="abrirModalEdicaoOuAdicao($event)" 
       (excluirUsuarioEmit)="excluirUsuario($event)">
     </usuario-card>
