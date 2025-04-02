@@ -22,12 +22,13 @@
 
    ```json
    {
-     "posts": [
-       { "id": 1, "title": "Hello World", "author": "Iana" }
-     ],
-     "comments": [
-       { "id": 1, "body": "Great post!", "postId": 1 }
-     ]
+     "users": [
+      {
+         "id": "6",
+         "nome": "Hermione Granger",
+         "email": "Hermione Granger@email.com"
+      }
+    ]
    }
    ```
 

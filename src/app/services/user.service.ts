@@ -7,8 +7,7 @@ import { Observable } from 'rxjs';
 })
 
 export class UserService {
-  // private readonly apiUrl = 'http://localhost:3000/';
-  private readonly apiUrl = 'https://jsonplaceholder.typicode.com/';
+  private readonly apiUrl = 'http://localhost:3000/';
   private readonly endpointUsuario = 'users/'; 
 
   constructor(private http: HttpClient) {}
@@ -17,8 +16,6 @@ export class UserService {
   obterUsuarios(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}${this.endpointUsuario}`);
   }
-
-  // Demais rotas caso use o json server
 
   // Método para editar um usuário
   editarUsuario(id: number, usuario: any): Observable<any> {

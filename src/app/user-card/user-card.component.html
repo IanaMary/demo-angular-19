@@ -1,13 +1,30 @@
-<ng-container ngIf="usuario">
+<ng-container *ngIf="usuario"> <!-- Verifica se o usuário existe -->
+                <!-- Cartão para exibir as informações do usuário -->
                 <mat-card class="example-card" appearance="outlined">
-                                <mat-card-header>
-                                                <div mat-card-avatar class="example-header-image"></div>
-                                                <mat-card-title>{{usuario?.name}}</mat-card-title>
-                                                <mat-card-subtitle>{{usuario?.email}}</mat-card-subtitle>
-                                </mat-card-header>
-                                <!-- Devia ter a imagem do usuario, mas a api não fornece -->
-                                <img mat-card-image src="assets/usuario.png"
-                                                alt="foto do perfil">
-                </mat-card>
 
+                                <!-- Cabeçalho do cartão, contendo o avatar e informações do usuário -->
+                                <mat-card-header>
+                                                <!-- Avatar do usuário -->
+                                                <div mat-card-avatar class="example-header-image"></div>
+                                                <!-- Nome do usuário -->
+                                                <mat-card-title>{{ usuario?.nome }}</mat-card-title>
+                                                <!-- Email do usuário -->
+                                                <mat-card-subtitle>{{ usuario?.email }}</mat-card-subtitle>
+                                </mat-card-header>
+
+                                <!-- Imagem do usuário, com fallback para imagem padrão caso a foto não exista -->
+                                <img mat-card-image [src]="usuario.foto || 'assets/usuario.png'" alt="Foto do perfil">
+
+                                <!-- Ações do cartão: Botões de editar e excluir -->
+                                <mat-card-actions>
+                                                <!-- Botão para editar o usuário -->
+                                                <button mat-button color="primary" (click)="editarUsuario(usuario)">
+                                                                Editar
+                                                </button>
+                                                <!-- Botão para excluir o usuário -->
+                                                <button mat-button color="warn" (click)="excluirUsuario(usuario.id)">
+                                                                Deletar
+                                                </button>
+                                </mat-card-actions>
+                </mat-card>
 </ng-container>

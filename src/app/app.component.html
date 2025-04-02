@@ -1,3 +1,13 @@
+<!-- Botão para adicionar um novo usuário -->
+<button mat-raised-button color="primary" (click)="abrirModalEdicaoOuAdicao(null)">Adicionar Usuário</button>
+
+<!-- Lista de usuários -->
 <ng-container *ngFor="let usuario of usuarios">
-  <user-card [usuario]="usuario"></user-card>
+  <!-- Componente para exibir o card do usuário -->
+  <!-- Função abrirModalEdicaoOuAdicao - Abre o modal de edição -->
+  <!-- Função excluirUsuario - Exclui o usuário -->
+  <user-card [usuario]="usuario" 
+    (editarUsuarioEmit)="abrirModalEdicaoOuAdicao($event)"  
+    (excluirUsuarioEmit)="excluirUsuario($event)"> 
+  </user-card>
 </ng-container>
