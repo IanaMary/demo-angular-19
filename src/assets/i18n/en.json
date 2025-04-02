@@ -5,6 +5,8 @@
   },
   "BOTOES":  {
     "ADICIONAR_USUARIO": "Add user",
+    "EDITAR_USUARIO": "Edit user",
+    "DELETAR_USUARIO": "Delete user",
     "PORTUGUES": "Portuguese",
     "INGLES": "English"
   }

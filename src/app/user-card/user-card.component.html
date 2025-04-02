@@ -17,11 +17,11 @@
     <mat-card-actions>
       <!-- Botão para editar o usuário -->
       <button mat-button color="primary" (click)="editarUsuario(usuario)">
-        Editar
+        {{ 'BOTOES.EDITAR_USUARIO' | translate }}
       </button>
       <!-- Botão para excluir o usuário -->
       <button mat-button color="warn" (click)="excluirUsuario(usuario.id)">
-        Deletar
+        {{ 'BOTOES.DELETAR_USUARIO' | translate }}
       </button>
     </mat-card-actions>
   </mat-card>
