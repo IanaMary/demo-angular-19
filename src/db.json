@@ -1,25 +1,61 @@
 {
   "users": [
     {
-      "id": "6",
-      "nome": "iana",
-      "email": "iana@email.com"
+      "id": "1",
+      "nome": "Harry Potter",
+      "email": "harrypotter@email.com"
     },
     {
-      "id": "d068",
-      "nome": "Iana    uu iii",
-      "email": "ianauuiii@email.com"
+      "id": "2",
+      "nome": "Hermione Granger",
+      "email": "hermionegranger@email.com"
     },
     {
-      "id": "3115",
-      "nome": "teste adicionar",
-      "email": "ii",
+      "id": "3",
+      "nome": "Ron Weasley",
+      "email": "ronweasley@email.com",
       "foto": ""
     },
     {
-      "id": "81d2",
-      "nome": "harry potter",
-      "email": "harrypotter@email.com",
+      "id": "4",
+      "nome": "Albus Dumbledore",
+      "email": "albusdumbledore@email.com",
+      "foto": ""
+    },
+    {
+      "id": "5",
+      "nome": "Severus Snape",
+      "email": "severussnape@email.com",
+      "foto": ""
+    },
+    {
+      "id": "6",
+      "nome": "Draco Malfoy",
+      "email": "dracomalfoy@email.com",
+      "foto": ""
+    },
+    {
+      "id": "7",
+      "nome": "Lord Voldemort",
+      "email": "lordvoldemort@email.com",
+      "foto": ""
+    },
+    {
+      "id": "8",
+      "nome": "Sirius Black",
+      "email": "siriusblack@email.com",
+      "foto": ""
+    },
+    {
+      "id": "9",
+      "nome": "Remus Lupin",
+      "email": "remuslupin@email.com",
+      "foto": ""
+    },
+    {
+      "id": "10",
+      "nome": "Rubeus Hagrid",
+      "email": "rubeushagrid@email.com",
       "foto": ""
     }
   ]

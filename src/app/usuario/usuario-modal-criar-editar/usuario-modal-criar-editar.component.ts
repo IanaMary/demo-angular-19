@@ -9,20 +9,20 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   standalone: true, // Define que este componente pode ser usado sem precisar de um módulo específico
-  selector: 'app-user-editar-dialog', // Nome do seletor para uso no HTML
-  templateUrl: './user-editar-dialog.component.html', // Caminho do template HTML do componente
-  styleUrls: ['./user-editar-dialog.component.sass'], // Caminho do arquivo de estilos
+  selector: 'usuario-modal-criar-editar', // Nome do seletor para uso no HTML
+  templateUrl: './usuario-modal-criar-editar.component.html', // Caminho do template HTML do componente
+  styleUrls: ['./usuario-modal-criar-editar.component.sass'], // Caminho do arquivo de estilos
   // Importação dos módulos necessários para o funcionamento do componente
   imports: [MatCardModule, MatButtonModule, CommonModule, MatInputModule, FormsModule, TranslateModule],  
 })
-export class UserEditarDialogComponent implements OnInit {
+export class UsuarioModalCriarEditarComponent implements OnInit {
 
   // Injeção de dependências:
   // - `MatDialogRef`: Referência do diálogo, usada para fechá-lo
   // - `MAT_DIALOG_DATA`: Dados passados para o diálogo (no caso, o usuário a ser editado)
   constructor(
     private translate: TranslateService, 
-    public dialogRef: MatDialogRef<UserEditarDialogComponent>,
+    public dialogRef: MatDialogRef<UsuarioModalCriarEditarComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any // Dados injetados no diálogo (usuário em edição)
   ) {
     // Define o idioma baseado no valor salvo no localStorage, padrão é 'pt'

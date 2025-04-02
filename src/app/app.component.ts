@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { UsuarioCardComponent } from './usuario/usuario-card/usuario-card.component';
 import { Usuario } from './usuario.model';
-import { UserEditarDialogComponent } from './user-editarr-dialog/user-editar-dialog.component';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { UsuarioService } from './usuario/services/usuario.service';
+import { UsuarioModalCriarEditarComponent } from './usuario/usuario-modal-criar-editar/usuario-modal-criar-editar.component';
 
 @Component({
   selector: 'app-root',
@@ -63,7 +63,7 @@ export class AppComponent {
     const usuarioEditado = usuario ? { ...usuario } : { nome: '', email: '', foto: '' };
     
     // Abre o modal de edição/adicionar usuário
-    const dialogRef = this.dialog.open(UserEditarDialogComponent, {
+    const dialogRef = this.dialog.open(UsuarioModalCriarEditarComponent, {
       width: '400px',
       data: { usuarioEditado },  
     });
