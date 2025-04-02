@@ -9,7 +9,7 @@ import { UsuarioModalCriarEditarComponent } from './usuario/usuario-modal-criar-
 
 @Component({
   selector: 'app-root',
-  standalone: true, 
+  standalone: true,
   imports: [CommonModule, UsuarioCardComponent, TranslateModule],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.sass'],
@@ -18,26 +18,26 @@ export class AppComponent {
   title = 'angular-api-demo';
 
   // Lista de usuários exibidos na interface
-  usuarios: Usuario[] = [];   
+  usuarios: Usuario[] = [];
 
   // Armazena temporariamente um usuário que está sendo editado
-  usuarioEditado: Usuario | null = null;  
+  usuarioEditado: Usuario | null = null;
 
   // Estrutura base para criar um novo usuário
-  novoUsuario: Usuario = { nome: '', email: '' };  
+  novoUsuario: Usuario = { nome: '', email: '' };
 
   // Controle para exibir ou ocultar o formulário de adição
-  mostrarFormularioAdicao = false;  
+  mostrarFormularioAdicao = false;
 
   constructor(
-    private usuariooService: UsuarioService, 
-    private dialog: MatDialog, 
+    private usuariooService: UsuarioService,
+    private dialog: MatDialog,
     private translate: TranslateService
-  ) {}
+  ) { }
 
   // Método executado ao iniciar o componente
   ngOnInit(): void {
-    this.obterUsuarios();  
+    this.obterUsuarios();
   }
 
   // Método para mudar o idioma da aplicação e salvar a preferência no localStorage
@@ -61,11 +61,11 @@ export class AppComponent {
   abrirModalEdicaoOuAdicao(usuario: Usuario | null) {
     // Cria um novo objeto para evitar alterações diretas no original
     const usuarioEditado = usuario ? { ...usuario } : { nome: '', email: '', foto: '' };
-    
+
     // Abre o modal de edição/adicionar usuário
     const dialogRef = this.dialog.open(UsuarioModalCriarEditarComponent, {
       width: '400px',
-      data: { usuarioEditado },  
+      data: { usuarioEditado },
     });
 
     // Após o fechamento do modal, verifica se houve edição ou adição de usuário
@@ -78,10 +78,6 @@ export class AppComponent {
 
   // Atualiza os dados de um usuário existente
   salvarEdicao(usuarioEditado: Usuario) {
-    // Gera um e-mail baseado no nome do usuário removendo espaços e convertendo para minúsculas
-    const email = usuarioEditado.nome.replace(/\s+/g, "").toLowerCase();
-    usuarioEditado.email = `${email}@email.com`; 
-
     this.usuariooService.editarUsuario(usuarioEditado.id!, usuarioEditado).subscribe((usuarioAtualizado: Usuario) => {
       const index = this.usuarios.findIndex(u => u.id === usuarioAtualizado.id);
       if (index !== -1) {
@@ -103,9 +99,6 @@ export class AppComponent {
   // Adiciona um novo usuário à lista
   adicionarUsuario(usuario: Usuario) {
     if (usuario.nome) {
-      const email = usuario.nome.replace(/\s+/g, "").toLowerCase();
-      usuario.email = `${email}@email.com`;
-
       this.usuariooService.adicionarUsuario(usuario).subscribe((usuarioAdicionado: Usuario) => {
         this.usuarios.unshift(usuarioAdicionado);  // Insere o novo usuário no topo da lista
         this.novoUsuario = { nome: '', email: '' };  // Reseta os campos do formulário
@@ -120,4 +113,5 @@ export class AppComponent {
       this.usuarios = this.usuarios.filter(usuario => usuario.id !== idUsuario);  // Remove o usuário da lista
     });
   }
+
 }

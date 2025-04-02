@@ -17,9 +17,6 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 })
 export class UsuarioModalCriarEditarComponent implements OnInit {
 
-  // Injeção de dependências:
-  // - `MatDialogRef`: Referência do diálogo, usada para fechá-lo
-  // - `MAT_DIALOG_DATA`: Dados passados para o diálogo (no caso, o usuário a ser editado)
   constructor(
     private translate: TranslateService, 
     public dialogRef: MatDialogRef<UsuarioModalCriarEditarComponent>,
@@ -30,16 +27,47 @@ export class UsuarioModalCriarEditarComponent implements OnInit {
     this.translate.use(idioma);
   }
 
-  // Método do ciclo de vida do Angular, pode ser usado para inicializações (atualmente não utilizado)
   ngOnInit(): void { }
 
-  // Método chamado ao salvar as alterações no usuário
+  // Método para salvar as alterações do usuário
   salvar() {
+    const nomeFormatado = this.formatarNome(this.data.usuarioEditado.nome);
+    
+    this.data.usuarioEditado.nome = nomeFormatado;
+
+    const emailFormatado = this.gerarEmail(nomeFormatado);
+    this.data.usuarioEditado.email = emailFormatado;
+    
     this.dialogRef.close(this.data.usuarioEditado); // Fecha o diálogo e retorna os dados editados
   }
 
-  // Método chamado ao cancelar a edição do usuário
+  // Método para cancelar a edição do usuário
   cancelar() {
     this.dialogRef.close(); // Fecha o diálogo sem salvar
+  }
+
+  /**
+   * Formata o nome para remover espaços extras e capitalizar cada palavra.
+   * Exemplo: " harry james    potter  " → "Harry James Potter"
+   */
+  private formatarNome(nome: string): string {
+    return nome
+      .trim() // Remove espaços extras no início e no fim
+      .split(/\s+/) // Divide em palavras, removendo múltiplos espaços
+      .map(palavra => palavra.charAt(0).toUpperCase() + palavra.slice(1).toLowerCase()) // Capitaliza
+      .join(" "); // Junta com espaço único
+  }
+
+  /**
+   * Gera um e-mail baseado no nome já formatado.
+   * Exemplo: "Harry James Potter" → "harry.j.potter@email.com"
+   */
+  private gerarEmail(nomeFormatado: string): string {
+    return nomeFormatado
+      .split(" ") // Divide em palavras
+      .map((palavra, index, arr) => index === 0 || index === arr.length - 1 ? palavra.toLowerCase() : palavra[0].toLowerCase()) // Mantém o primeiro e último nome completos e usa iniciais no meio
+      .join(".") // Junta com "."
+      .toLowerCase() // Garante que todo o e-mail fique em letras minúsculas
+      + "@email.com"; // Adiciona domínio
   }
 }
